@@ -24,6 +24,7 @@ def render(title, t0, n_cols):
         print(row)
     print()
 
+os.environ['TZ'] = 'UTC'
 render("now", datetime.now(), 80)
 render("end of year", datetime(2024, 12, 20), 80)
 render("end of next year", datetime(2025, 12, 20), 80)

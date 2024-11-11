@@ -17,7 +17,7 @@ assert len(data) == 7
 def get_week_nr(t):
     t=t.replace(hour=12, minute=0)
     d0=datetime(2024, 9, 29)
-    return (t-d0).days//7
+    return ( (t-d0).days//7 ) + (len(data[0]) - 7)
     #from dateutil import rrule as r
     #return r.rrule(r.WEEKLY, dtstart=d0, until=t).count()
     sun=d0
@@ -37,10 +37,12 @@ def paint(t):
     t = t.replace(hour=12, minute=0)
     row = ( t.weekday() + 1 ) % 7 # on github, sunday=0
     col = get_week_nr(t) % len(data[0])
+    print('row', row, 'col', col)
     x = read_value(row, col)
     return x
 
 def main():
+    os.environ['TZ'] = 'UTC'
     t = datetime.now()
     x = paint(t)
     # inverted return value;
