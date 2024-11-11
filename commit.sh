@@ -1,7 +1,9 @@
 #!/bin/bash
 if python3 ./paint.py
 then
-	git commit --allow-empty -m 'commit'
-	git push
+	for i in `seq 10`; do
+		git commit --allow-empty -m 'commit'
+		git push
+	done
 fi
 
