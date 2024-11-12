@@ -7,7 +7,7 @@ from paint import paint
 
 def commit(t):
     if paint(t):
-        for _ in range(1):
+        for _ in range(4):
             d = t.isoformat(timespec='seconds')
             t = t + timedelta(seconds=1)
             opts=['/usr/bin/git', 'commit', '--date', d, '--allow-empty', '-m', 'commit']
